@@ -35,7 +35,7 @@ const App = () => {
           setUsuarioLogueado(null);
         }
       } catch (error) {
-        setUsuatioLogueado(null);
+        setUsuarioLogueado(null);
       }
     };
     verificarSesion();
