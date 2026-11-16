@@ -81,10 +81,8 @@ const Footer = () => {
           <div className="col-12 col-md-6 col-lg-2">
             <h4 className="titulo">Explorar</h4>
             <div className="linksNavegacion">
-              <a href="">Información</a>
-              <a href="">Planes</a>
-              <a href="">Sedes</a>
-              <a href="">Inicio</a>
+              <a href="/sobrenosotros">Información</a>
+              <a href="/">Inicio</a>
             </div>
           </div>
 
