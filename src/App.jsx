@@ -9,7 +9,7 @@ import Footer from "./components/footer/Footer";
 import { CartProvider } from "./components/carrito/carrito.jsx";
 import SobreNosotros from "./pages/SobreNosotros.jsx";
 import Contacto from "./pages/Contacto.jsx";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/InicioPage.jsx";
 import DetalleDePlan from "./components/detalleDePlan/DetalleDePlan.jsx";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin.jsx";
 import PanelUsuarios from "./pages/PanelUsuarios.jsx";
