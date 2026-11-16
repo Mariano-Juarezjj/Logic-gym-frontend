@@ -24,7 +24,7 @@ import imgProteina from '../assets/proteina1.jpg';
 import heroVideo from '../assets/videoLogicGym.mp4';
 
 import asesoramiento from '../assets/asesoramientonutricional.webp';
-import box from '../assets/clasesdeBoxCrossfit.jpg';
+import box from '../assets/ClasesdeBoxCrossFit.jpg';
 import clasesg from '../assets/clasesgrupales.jpg';
 import salam from '../assets/SaladeMusculación.jpg';
 import evaluacionf from '../assets/evaluacionfisica.jpg';
@@ -156,39 +156,6 @@ const HomePage = () => {
     }, 1000);
 
 }, [])
-
-    // const fetchPlanes = async () => {
-    //   try {
-      //   const res = await fetch('http://localhost:3000/api/planes');
-      //   const data = await res.json();
-      //   setPlanes(data);
-      // } catch (error) {
-      //   console.error("Error al cargar planes desde el backend:", error);
-    //     setPlanes([
-    //       { titulo: 'PLAN SOLO MUSCULACIÓN', descripcion: 'Acceso ilimitado a nuestra sala de pesas, máquinas de fuerza y sector de peso libre de última generación.', precio: 15000 },
-    //       { titulo: 'PLAN SOLO CLASES', descripcion: 'Participá de todas nuestras clases guiadas: Funcional, Ritmos, HIIT, Stretching y mucho más.', precio: 18000 },
-    //       { titulo: 'PLAN FULL', descripcion: 'Acceso libre y total sin restricciones: Musculación, todas las clases del gimnasio y asesoramiento personalizado.', precio: 25000 }
-    //     ]);
-    //   } finally {
-    //     setCargandoPlanes(false);
-    //   }
-    // };
-
-  //   const fetchProductos = async () => {
-  //     try {
-  //       const res = await fetch('http://localhost:3000/api/productos');
-  //       const data = await res.json();
-  //       if (Array.isArray(data) && data.length > 0) {
-  //         setProductos(data);
-  //       }
-  //     } catch (error) {
-  //       console.warn('No se pudo cargar productos desde backend, usando lista local.');
-  //     }
-  //   };
-
-  //   fetchPlanes();
-  //   fetchProductos();
-  // }, []);
 
   const tamanioPagina = 3;
   const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
