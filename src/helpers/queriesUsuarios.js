@@ -8,6 +8,7 @@ export const registrarUsuario = async (usuarioNuevo) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(usuarioNuevo),
+      credentials: "include"
     });
 
     const data = await respuesta.json();
@@ -36,6 +37,7 @@ export const loginUsuario = async (usuarioLogin) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(usuarioLogin),
+      credentials: "include"
     });
 
     const data = await respuesta.json();
@@ -58,7 +60,9 @@ export const loginUsuario = async (usuarioLogin) => {
 
 export const obtenerUsuarios = async () => {
   try {
-    const respuesta = await fetch(URL_USUARIOS);
+    const respuesta = await fetch(URL_USUARIOS, {
+      credentials: "include"
+    });
 
     const data = await respuesta.json();
 
@@ -78,7 +82,9 @@ export const obtenerUsuarios = async () => {
 
 export const obtenerUsuarioPorId = async (id) => {
   try {
-    const respuesta = await fetch(`${URL_USUARIOS}/${id}`);
+    const respuesta = await fetch(`${URL_USUARIOS}/${id}`, {
+      credentials: "include"
+    });
 
     const data = await respuesta.json();
 
@@ -104,6 +110,7 @@ export const editarUsuario = async (id, usuarioEditado) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(usuarioEditado),
+      credentials: "include"
     });
 
     const data = await respuesta.json();
@@ -126,8 +133,9 @@ export const editarUsuario = async (id, usuarioEditado) => {
 
 export const eliminarUsuario = async (id) => {
   try {
-    const respuesta = await fetch(`${URL_USUARIOS}/${id}`, {
+    const respuesta = await fetch(`${URL_USUARIOS }/${id}`, {
       method: "DELETE",
+      credentials: "include"
     });
 
     const data = await respuesta.json();

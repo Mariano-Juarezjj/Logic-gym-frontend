@@ -4,14 +4,18 @@ const URL_RESERVAS = `${import.meta.env.VITE_API_URL}/reservas`;
 
 export const obtenerClasesDisponibles = async () => {
   try {
-    const respuestaClases = await fetch(URL_CLASES);
+    const respuestaClases = await fetch(URL_CLASES, {
+      credentials: "include"
+    });
     if (!respuestaClases.ok) throw new Error("Error al obtener clases del servidor");
     const clases = await respuestaClases.json();
     console.log("Clases obtenidas del backend:", clases);
 
     let reservas = [];
     try {
-      const respuestaReservas = await fetch(URL_RESERVAS);
+      const respuestaReservas = await fetch(URL_RESERVAS, {
+        credentials: "include"
+      });
       if (respuestaReservas.ok) {
         reservas = await respuestaReservas.json();
         console.log("Reservas obtenidas del backend:", reservas);
@@ -71,6 +75,7 @@ export const crearReservaMongo = async (claseId, usuarioId) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ claseId, usuarioId }),
+      credentials: "include"
     });
 
     const data = await respuesta.json();
@@ -92,6 +97,7 @@ export const cancelarReservaMongo = async (claseId, usuarioId) => {
       `${URL_RESERVAS}?claseId=${claseId}&usuarioId=${usuarioId}`,
       {
         method: "DELETE",
+        credentials: "include"
       }
     );
 

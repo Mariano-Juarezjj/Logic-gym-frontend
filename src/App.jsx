@@ -22,10 +22,12 @@ import VistaUsuario from "./pages/VistaUsuario.jsx";
 const App = () => {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
 
+  const URL_BACKEND = import.meta.env.VITE_API_URL
+
   useEffect(() => {
     const verificarSesion = async () => {
       try {
-        const respuesta = await fetch("http://localhost:3000/api/usuarios/perfil", {
+        const respuesta = await fetch(`${URL_BACKEND}/api/usuarios/perfil`, {
           credentials: "include",
         });
         if (respuesta.ok) {
