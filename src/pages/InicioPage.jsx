@@ -143,6 +143,10 @@ const HomePage = () => {
   
   const { agregarAlCarrito } = useContext(ContextoCarrito);
 
+  const handleConsultarPlan = (tituloPlan) => {
+    navigate("/detalle", { state: { planElegido: tituloPlan } });
+  };
+
   useEffect(() => {
     const planesDePrueba = [
       {_id: 'test-1', titulo: 'PLAN SOLO MUSCULACIÓN', descripcion: 'Acceso ilimitado a nuestra sala de pesas, máquinas de fuerza y sector de peso libre de última generación.', precio: 15000 },
