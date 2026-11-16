@@ -20,14 +20,26 @@ import VistaUsuario from "./pages/VistaUsuario.jsx";
 
 
 const App = () => {
-  const sesionUsuario =
-    JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
-
-  const [usuarioLogueado, setUsuarioLogueado] = useState(sesionUsuario);
+  const [usuarioLogueado, setUsuarioLogueado] = useState(null);
 
   useEffect(() => {
-    sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogueado));
-  }, [usuarioLogueado]);
+    const verificarSesion = async () => {
+      try {
+        const respuesta = await fetch("http://localhost:3000/api/usuarios/perfil", {
+          credentials: "include",
+        });
+        if (respuesta.ok) {
+          const data = await respuesta.json();
+          setUsuarioLogueado(data);
+        } else {
+          setUsuarioLogueado(null);
+        }
+      } catch (error) {
+        setUsuarioLogueado(null);
+      }
+    };
+    verificarSesion();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -42,7 +54,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/sobrenosotros" element={<SobreNosotros />} />
-            <Route path="/detalle" element={<DetalleDePlan/> } />
+            <Route path="/detalle/:id" element={<DetalleDePlan/> } />
 
             <Route
               path="/login"

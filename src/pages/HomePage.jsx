@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { ContextoCarrito } from "../components/carrito/carrito.jsx";
 
+import "../components/detalleDePlan/DetalleDePlan.jsx";
 import WidgetClima from '../components/clima/Clima.jsx';
 import BannerInfinito from "../components/bannerInfinito/BannerInfinito.jsx";
 import '../pages/HomePage.css';
@@ -147,38 +148,51 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    const fetchPlanes = async () => {
-      try {
-        const res = await fetch('http://localhost:3000/api/planes');
-        const data = await res.json();
-        setPlanes(data);
-      } catch (error) {
-        console.error("Error al cargar planes desde el backend:", error);
-        setPlanes([
-          { titulo: 'PLAN SOLO MUSCULACIÓN', descripcion: 'Acceso ilimitado a nuestra sala de pesas, máquinas de fuerza y sector de peso libre de última generación.', precio: 15000 },
-          { titulo: 'PLAN SOLO CLASES', descripcion: 'Participá de todas nuestras clases guiadas: Funcional, Ritmos, HIIT, Stretching y mucho más.', precio: 18000 },
-          { titulo: 'PLAN FULL', descripcion: 'Acceso libre y total sin restricciones: Musculación, todas las clases del gimnasio y asesoramiento personalizado.', precio: 25000 }
-        ]);
-      } finally {
-        setCargandoPlanes(false);
-      }
-    };
+    const planesDePrueba = [
+      {_id: 'test-1', titulo: 'PLAN SOLO MUSCULACIÓN', descripcion: 'Acceso ilimitado a nuestra sala de pesas, máquinas de fuerza y sector de peso libre de última generación.', precio: 15000 },
+      {_id: 'test-2', titulo: 'PLAN SOLO CLASES', descripcion: 'Participá de todas nuestras clases guiadas: Funcional, Ritmos, HIIT, Stretching y mucho más.', precio: 18000 },
+      {_id: 'test-3', titulo: 'PLAN FULL', descripcion: 'Acceso libre y total sin restricciones: Musculación, todas las clases del gimnasio y asesoramiento personalizado.', precio: 25000 }
+    ];
 
-    const fetchProductos = async () => {
-      try {
-        const res = await fetch('http://localhost:3000/api/productos');
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setProductos(data);
-        }
-      } catch (error) {
-        console.warn('No se pudo cargar productos desde backend, usando lista local.');
-      }
-    };
+    setTimeout(() => {
+      setPlanes(planesDePrueba);
+      setCargandoPlanes(false);
+    }, 1000);
 
-    fetchPlanes();
-    fetchProductos();
-  }, []);
+}, [])
+
+    // const fetchPlanes = async () => {
+    //   try {
+      //   const res = await fetch('http://localhost:3000/api/planes');
+      //   const data = await res.json();
+      //   setPlanes(data);
+      // } catch (error) {
+      //   console.error("Error al cargar planes desde el backend:", error);
+    //     setPlanes([
+    //       { titulo: 'PLAN SOLO MUSCULACIÓN', descripcion: 'Acceso ilimitado a nuestra sala de pesas, máquinas de fuerza y sector de peso libre de última generación.', precio: 15000 },
+    //       { titulo: 'PLAN SOLO CLASES', descripcion: 'Participá de todas nuestras clases guiadas: Funcional, Ritmos, HIIT, Stretching y mucho más.', precio: 18000 },
+    //       { titulo: 'PLAN FULL', descripcion: 'Acceso libre y total sin restricciones: Musculación, todas las clases del gimnasio y asesoramiento personalizado.', precio: 25000 }
+    //     ]);
+    //   } finally {
+    //     setCargandoPlanes(false);
+    //   }
+    // };
+
+  //   const fetchProductos = async () => {
+  //     try {
+  //       const res = await fetch('http://localhost:3000/api/productos');
+  //       const data = await res.json();
+  //       if (Array.isArray(data) && data.length > 0) {
+  //         setProductos(data);
+  //       }
+  //     } catch (error) {
+  //       console.warn('No se pudo cargar productos desde backend, usando lista local.');
+  //     }
+  //   };
+
+  //   fetchPlanes();
+  //   fetchProductos();
+  // }, []);
 
   const tamanioPagina = 3;
   const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
@@ -324,8 +338,9 @@ const HomePage = () => {
                       <Card.Text className="text-muted card-plan-text">{plan.descripcion}</Card.Text>
                     </div>
                     <Button 
+                      as={Link} to={`/detalle/${plan._id}`}
                       className="w-100 mt-4 fw-bold py-2 btn-blue"
-                      onClick={() => handleConsultarPlan(plan.titulo)}
+                      // onClick={() => handleConsultarPlan(plan.titulo)}
                     >
                       CONSULTAR PLAN
                     </Button>
@@ -411,5 +426,4 @@ const HomePage = () => {
     </div>
   );
 };
-
 export default HomePage;
