@@ -27,7 +27,7 @@ const App = () => {
   useEffect(() => {
     const verificarSesion = async () => {
       try {
-        const respuesta = await fetch(`${URL_BACKEND}/api/usuarios/perfil`, {
+        const respuesta = await fetch(`${URL_BACKEND}/usuarios/perfil`, {
           credentials: "include",
         });
         if (respuesta.ok) {
