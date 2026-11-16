@@ -2,7 +2,9 @@ const URL_CLASES = `${import.meta.env.VITE_API_URL}/clases`;
 
 export const obtenerClases = async () => {
   try {
-    const respuesta = await fetch(URL_CLASES);
+    const respuesta = await fetch(URL_CLASES, {
+      credentials: "include"
+    });
 
     const data = await respuesta.json();
 
@@ -28,6 +30,7 @@ export const crearClase = async (claseNueva) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(claseNueva),
+      credentials: "include"
     });
 
     const data = await respuesta.json();
@@ -56,6 +59,7 @@ export const editarClase = async (id, claseEditada) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(claseEditada),
+      credentials: "include"
     });
 
     const data = await respuesta.json();
@@ -80,6 +84,7 @@ export const eliminarClase = async (id) => {
   try {
     const respuesta = await fetch(`${URL_CLASES}/${id}`, {
       method: "DELETE",
+      credentials: "include"
     });
 
     const data = await respuesta.json();
