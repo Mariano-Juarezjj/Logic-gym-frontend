@@ -1,6 +1,7 @@
 import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../navbar/BarraNavegacion.css";
+import logicGym from "../../assets/logicGym.png";
 
 const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
@@ -14,8 +15,12 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
   return (
     <Navbar expand="lg" className="custom-navbar">
       <Container fluid className="px-4 px-lg-5">
-        <Navbar.Brand as={Link} to="/" className="logo-text">
-          Logic Gym
+        <Navbar.Brand as={Link} to="/">
+          <img
+            src={logicGym}
+            alt="Logo Logic Gym"
+            className="logo-img"
+          />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbar-nav" />
