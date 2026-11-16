@@ -22,7 +22,7 @@ import VistaUsuario from "./pages/VistaUsuario.jsx";
 const App = () => {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
 
-  const URL_BACKEND = import.meta.env.VITE_API_URL
+  const URL_BACKEND = "https://logic-gym-backend-wave.vercel.app/api";
 
   useEffect(() => {
     const verificarSesion = async () => {
